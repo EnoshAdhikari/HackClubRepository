@@ -181,8 +181,118 @@ public class CurrencyConverter
                     double jpyToAud = 0.0090;
                     double jpyToCad = 0.0089;
 
+                    convertedAmount = jpy * amount;
+                    double usdAmount = convertedAmount * jpyToUsd;
+                    double eurAmount = convertedAmount * jpyToEur;
+                    double gbpAmount = convertedAmount * jpyToGbp;
+                    double audAmount = convertedAmount * jpyToAud;
+                    double cadAmount = convertedAmount * jpyToCad;
+
+                    // Print Amounts
+                    if(toCurrency.equalsIgnoreCase("USD"))
+                    {
+                        System.out.println("Converted Amount: " + usdAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("EUR"))
+                    {
+                        System.out.println("Converted Amount: " + eurAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("GBP"))
+                    {
+                        System.out.println("Converted Amount: " +  gbpAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("AUD"))
+                    {
+                        System.out.println("Converted Amount: " + audAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("CAD"))
+                    {
+                        System.out.println("Converted Amount: " + cadAmount);
+                    }
+
                 }
 
+                // conversion from AUD to other currencies logic
+                else if(fromCurrency.equalsIgnoreCase("AUD"))
+                {
+                    // Conversion rates
+                    double aud = 1.00;
+                    double audToUsd = 0.70;
+                    double audToEur = 0.62;
+                    double audToGbp = 0.53;
+                    double audToJpy = 110.72;
+                    double audToCad = 0.95;
+
+                    convertedAmount = aud * amount;
+                    double usdAmount = convertedAmount * audToUsd;
+                    double eurAmount = convertedAmount * audToEur;
+                    double gbpAmount = convertedAmount * audToGbp;
+                    double jpyAmount = convertedAmount * audToJpy;
+                    double cadAmount = convertedAmount * audToCad;
+
+                    // Print Amounts
+                    if(toCurrency.equalsIgnoreCase("USD"))
+                    {
+                        System.out.println("Converted Amount: " + usdAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("EUR"))
+                    {
+                        System.out.println("Converted Amount: " + eurAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("GBP"))
+                    {
+                        System.out.println("Converted Amount: " + gbpAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("JPY"))
+                    {
+                        System.out.println("Converted Amount: " + jpyAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("CAD"))
+                    {
+                        System.out.println("Converted Amount: " + cadAmount);
+                    }
+                }
+
+                // conversion from CAD to other currencies logic
+                else if(fromCurrency.equalsIgnoreCase("CAD"))
+                {
+                    // Conversion rates
+                    double cad = 1.00;
+                    double cadToUsd = 0.70;
+                    double cadToEur = 0.62;
+                    double cadToGbp = 0.53;
+                    double cadToJpy = 110.72;
+                    double cadToAud = 1.05;
+
+                    convertedAmount = cad * amount;
+                    double usdAmount = convertedAmount * cadToUsd;
+                    double eurAmount = convertedAmount * cadToEur;
+                    double gbpAmount = convertedAmount * cadToGbp;
+                    double jpyAmount = convertedAmount * cadToJpy;
+                    double audAmount = convertedAmount * cadToAud;
+
+                    // Print Amounts
+                    if(toCurrency.equalsIgnoreCase("USD"))
+                    {
+                        System.out.println("Converted Amount: " + usdAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("EUR"))
+                    {
+                        System.out.println("Converted Amount: " + eurAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("GBP"))
+                    {
+                        System.out.println("Converted Amount: " + gbpAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("JPY"))
+                    {
+                        System.out.println("Converted Amount: " + jpyAmount);
+                    }
+                    else if(toCurrency.equalsIgnoreCase("AUD"))
+                    {
+                        System.out.println("Converted Amount: " + audAmount);
+                    }
+                }
             }
         }
         else
