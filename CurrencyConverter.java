@@ -305,5 +305,109 @@ public class CurrencyConverter
         {
             System.out.println("Invalid input. Please restart the program and enter a valid currency.");
         }
+
+        // Ask user if they want to convert another currency
+
+        System.out.print("Thank you for using the Currency Converter, do you want to convert another currency? (yes/no): ");
+        String anotherConversion = input.nextLine();
+        while(!anotherConversion.equalsIgnoreCase("yes") && !anotherConversion.equalsIgnoreCase("no"))
+        {
+            System.out.print("Invalid input, please enter 'yes' or 'no': ");
+            anotherConversion = input.nextLine();
+        }
+
+        if(anotherConversion.equalsIgnoreCase("yes"))
+        {
+            System.out.println("Supported Currencies:");
+            System.out.println("1. USD- US Dollar");
+            System.out.println("2. EUR- Euro");
+            System.out.println("3. GBP- British Pound");
+            System.out.println("4. JPY- Japanese Yen");
+            System.out.println("5. AUD- Australian Dollar");
+            System.out.println("6. CAD- Canadian Dollar");
+            System.out.println("");
+
+            // Ask user what they want to conver from
+            System.out.print("Enter the currency you want to conver from (e.g., USD, EUR, GBP, JPY, AUD, CAD): ");
+            fromCurrency = input.nextLine();
+
+            // If the input currency is not valid, while loop will keep asking the user till they give a valid input
+            while(!fromCurrency.equalsIgnoreCase("USD") && !fromCurrency.equalsIgnoreCase("EUR") && !fromCurrency.equalsIgnoreCase("GBP") && !fromCurrency.equalsIgnoreCase("JPY") && !fromCurrency.equalsIgnoreCase("AUD") && !fromCurrency.equalsIgnoreCase("CAD"))
+            {
+                System.out.print("Invalid input, please try a valid currency (USD, EUR, GBP, JPY, AUD, CAD): ");
+                fromCurrency = input.nextLine();
+            }
+
+            // Logic to check if the input currency is valid
+            if(fromCurrency.equalsIgnoreCase("USD") || fromCurrency.equalsIgnoreCase("EUR") || fromCurrency.equalsIgnoreCase("GBP") || fromCurrency.equalsIgnoreCase("JPY") || fromCurrency.equalsIgnoreCase("AUD") || fromCurrency.equalsIgnoreCase("CAD"))
+            {
+                System.out.print("Enter the amount you want to convert: ");
+                double amount = input.nextDouble();
+                while(amount < 0.0)
+                {
+                    System.out.print("Invalid input, please enter a positive amount: ");
+                    amount = input.nextDouble();
+                }
+                System.out.print("Enter the currency you want to convert to (USD, EUR, GBP, JPY, AUD, CAD): ");
+                String toCurrency = input.nextLine();
+                while(!toCurrency.equalsIgnoreCase("USD") && !toCurrency.equalsIgnoreCase("EUR") && !toCurrency.equalsIgnoreCase("GBP") && !toCurrency.equalsIgnoreCase("JPY") && !toCurrency.equalsIgnoreCase("AUD") && !toCurrency.equalsIgnoreCase("CAD"))
+                {
+                    System.out.print("Invalid input, please try a valid currency (USD, EUR, GBP, JPY, AUD, CAD): ");
+                    toCurrency = input.nextLine();
+                }
+                if(toCurrency.equalsIgnoreCase("USD") || toCurrency.equalsIgnoreCase("EUR") || toCurrency.equalsIgnoreCase("GBP") || toCurrency.equalsIgnoreCase("JPY") || toCurrency.equalsIgnoreCase("AUD") || toCurrency.equalsIgnoreCase("CAD"))
+                {
+                    double convertedAmount = 0.0;
+
+                    // Conversion logic for the repeated conversion can be implemented here, identical to the first conversion logic above
+                    if(fromCurrency.equalsIgnoreCase("USD"))
+                    {
+                        // Conversion rates
+                        double usd = 1.00;
+                        double usdToEur = 0.89;
+                        double usdToGbp = 0.76;
+                        double usdToJpy = 158.33;
+                        double usdToAud = 1.47;
+                        double usdToCad = 1.43;
+
+                        convertedAmount = usd * amount;
+                        double eurAmount = convertedAmount * usdToEur;
+                        double gbpAmount = convertedAmount * usdToGbp;
+                        double jpyAmount = convertedAmount * usdToJpy;
+                        double audAmount = convertedAmount * usdToAud;
+                        double cadAmount = convertedAmount * usdToCad;
+
+                        // Print Amounts
+                        if(toCurrency.equalsIgnoreCase("EUR"))
+                        {
+                            System.out.println("Converted Amount: " + eurAmount);
+                        }
+                        else if(toCurrency.equalsIgnoreCase("GBP"))
+                        {
+
+                            System.out.println("Converted Amount");
+                        }
+                        else if(toCurrency.equalsIgnoreCase("JPY"))
+                        {
+                            System.out.println("Converted Amount: " + jpyAmount);
+                        }
+                        else if(toCurrency.equalsIgnoreCase("AUD"))
+                        {
+                            System.out.println("Converted Amount: " + audAmount);
+                        }
+                        else if(toCurrency.equalsIgnoreCase("CAD"))
+                        {
+                            System.out.println("Converted Amount: " + cadAmount);
+                        }
+                    }
+
+                    // Conversion from EUR to other currencies logic
+                    else if(fromCurrency.equalsIgnoreCase("EUR"))
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }
