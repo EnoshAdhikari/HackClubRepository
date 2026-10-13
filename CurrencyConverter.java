@@ -42,7 +42,12 @@ public class CurrencyConverter
                 amount = input.nextDouble();
             }
             System.out.print("Enter the currency you want to convert to (USD, EUR, GBP, JPY, AUD, CAD): ");
-            String toCurrency = input.next();
+            String toCurrency = input.nextLine();
+            while(!toCurrency.equalsIgnoreCase("USD") && !toCurrency.equalsIgnoreCase("EUR") && !toCurrency.equalsIgnoreCase("GBP") && !toCurrency.equalsIgnoreCase("JPY") && !toCurrency.equalsIgnoreCase("AUD") && !toCurrency.equalsIgnoreCase("CAD"))
+            {
+                System.out.print("Invalid input, please try a valid currency (USD, EUR, GBP, JPY, AUD, CAD): ");
+                toCurrency = input.nextLine();
+            }
             if(toCurrency.equalsIgnoreCase("USD") || toCurrency.equalsIgnoreCase("EUR") || toCurrency.equalsIgnoreCase("GBP") || toCurrency.equalsIgnoreCase("JPY") || toCurrency.equalsIgnoreCase("AUD") || toCurrency.equalsIgnoreCase("CAD"))
             {
                 double convertedAmount = 0.0;
@@ -91,6 +96,7 @@ public class CurrencyConverter
                 // Conversion from EUR to other currencies logic
                 else if(fromCurrency.equalsIgnoreCase("EUR"))
                 {
+
                     // Conversion rates
                     double eur = 1.00;
                     double eurToUsd = 1.12;
