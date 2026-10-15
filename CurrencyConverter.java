@@ -84,7 +84,7 @@ public class CurrencyConverter
                     if(toCurrency.equalsIgnoreCase("EUR"))
                     {
                         System.out.println("Converted Amount: " + eurAmount);
-                        history[historyCount] = amount + "USD -> " + eurAmount + " EUR";
+                        history[historyCount] = amount + " USD -> " + eurAmount + " EUR";
                         historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("GBP"))
@@ -108,7 +108,7 @@ public class CurrencyConverter
                     else if(toCurrency.equalsIgnoreCase("CAD"))
                     {
                         System.out.println("Converted Amount: " + cadAmount);
-                        history[historyCount] = amount + "USD -> " + cadAmount + " CAD";
+                        history[historyCount] = amount + " USD -> " + cadAmount + " CAD";
                         historyCount++;
                     }
                 }
@@ -205,10 +205,14 @@ public class CurrencyConverter
                     else if(toCurrency.equalsIgnoreCase("AUD"))
                     {
                         System.out.println("Converted Amount: " + audAmount);
+                        history[historyCount] = amount + "GBP -> " + audAmount + " AUD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("CAD"))
                     {
                         System.out.println("Converted Amount: " + cadAmount);
+                        history[historyCount] = amount + "GBP -> " + cadAmount + " AUD";
+                        historyCount++;
                     }
                 }
 
@@ -234,22 +238,32 @@ public class CurrencyConverter
                     if(toCurrency.equalsIgnoreCase("USD"))
                     {
                         System.out.println("Converted Amount: " + usdAmount);
+                        history[historyCount] = amount + "JPY -> " + usdAmount + " USD";
+                        historyCount++; 
                     }
                     else if(toCurrency.equalsIgnoreCase("EUR"))
                     {
                         System.out.println("Converted Amount: " + eurAmount);
+                        history[historyCount] = amount + " JPY -> " + eurAmount + " EUR";
+                        historyCount++; 
                     }
                     else if(toCurrency.equalsIgnoreCase("GBP"))
                     {
                         System.out.println("Converted Amount: " +  gbpAmount);
+                        history[historyCount] = amount + " JPY -> " + gbpAmount + " GBP";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("AUD"))
                     {
                         System.out.println("Converted Amount: " + audAmount);
+                        history[historyCount] = amount + " JPY -> " + audAmount + " AUD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("CAD"))
                     {
                         System.out.println("Converted Amount: " + cadAmount);
+                        history[historyCount] = amount + " JPY - > " + cadAmount + " CAD";
+                        historyCount++;
                     }
 
                 }
@@ -276,22 +290,32 @@ public class CurrencyConverter
                     if(toCurrency.equalsIgnoreCase("USD"))
                     {
                         System.out.println("Converted Amount: " + usdAmount);
+                        history[historyCount] = amount + " AUD -> " + usdAmount + " USD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("EUR"))
                     {
                         System.out.println("Converted Amount: " + eurAmount);
+                        history[historyCount] = amount + " AUD -> " + eurAmount + " EUR";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("GBP"))
                     {
                         System.out.println("Converted Amount: " + gbpAmount);
+                        history[historyCount] = amount + " AUD -> " + gbpAmount + " GBP";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("JPY"))
                     {
                         System.out.println("Converted Amount: " + jpyAmount);
+                        history[historyCount] = amount + " AUD -> " + jpyAmount + " JPY";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("CAD"))
                     {
                         System.out.println("Converted Amount: " + cadAmount);
+                        history[historyCount] = amount + " AUD -> " + cadAmount + " CAD";
+                        historyCount++;
                     }
                 }
 
@@ -317,22 +341,32 @@ public class CurrencyConverter
                     if(toCurrency.equalsIgnoreCase("USD"))
                     {
                         System.out.println("Converted Amount: " + usdAmount);
+                        history[historyCount] = amount + " CAD -> " + usdAmount + " USD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("EUR"))
                     {
                         System.out.println("Converted Amount: " + eurAmount);
+                        history[historyCount] = amount + " CAD -> " + eurAmount + " EUR";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("GBP"))
                     {
                         System.out.println("Converted Amount: " + gbpAmount);
+                        history[historyCount] = amount + " CAD -> " + gbpAmount + " GBP";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("JPY"))
                     {
                         System.out.println("Converted Amount: " + jpyAmount);
+                        history[historyCount] = amount + " CAD -> " + jpyAmount + " JPY";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("AUD"))
                     {
                         System.out.println("Converted Amount: " + audAmount);
+                        history[historyCount] = amount + " CAD -> " + audAmount + " AUD";
+                        historyCount++;
                     }
                 }
             }
@@ -342,6 +376,7 @@ public class CurrencyConverter
             System.out.println("Invalid input. Please restart the program and enter a valid currency.");
         }
 
+
         // Ask user if they want to convert another currency
         System.out.print("Would you like to convert another currency? (yes/no): ");
         anotherConversion = input.nextLine();
@@ -350,6 +385,15 @@ public class CurrencyConverter
             System.out.print("Please enter 'Yes' or 'No': ");
             anotherConversion = input.nextLine();
         }
+        }
+
+        System.out.println("==================");
+        System.out.println("Conversion History");
+        System.out.println("==================");
+
+        for(int i = 0; i < historyCount; i++)
+        {
+            System.out.println((i + 1) + ". " + history[i]);
         }
         
         System.out.println("Thank you for using the Currency Converter!");
