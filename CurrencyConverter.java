@@ -3,9 +3,13 @@ public class CurrencyConverter
 {
     public static void main(String[] args)
     {
+
         // Scanner object, to read the user input
         Scanner input = new Scanner(System.in);
         String anotherConversion = "yes";
+
+        String[] history = new String[100];
+        int historyCount = 0;
 
         System.out.println("----------------------------------"); 
         System.out.println("Welcome to the Currency Converter!");
@@ -80,22 +84,32 @@ public class CurrencyConverter
                     if(toCurrency.equalsIgnoreCase("EUR"))
                     {
                         System.out.println("Converted Amount: " + eurAmount);
+                        history[historyCount] = amount + "USD -> " + eurAmount + " EUR";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("GBP"))
                     {
                         System.out.println("Converted Amount: " + gbpAmount);
+                        history[historyCount] = amount + " USD -> " + gbpAmount + " GBP";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("JPY"))
                     {
                         System.out.println("Converted Amount: " + jpyAmount);
+                        history[historyCount] = amount + " USD -> " + jpyAmount + " JPY";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("AUD"))
                     {
                         System.out.println("Converted Amount: " + audAmount);
+                        history[historyCount] = amount + " USD -> " + audAmount + " AUD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("CAD"))
                     {
                         System.out.println("Converted Amount: " + cadAmount);
+                        history[historyCount] = amount + "USD -> " + cadAmount + " CAD";
+                        historyCount++;
                     }
                 }
                 
@@ -122,22 +136,32 @@ public class CurrencyConverter
                     if(toCurrency.equalsIgnoreCase("USD"))
                     {
                         System.out.println("Converted Amount: " + usdAmount);
+                        history[historyCount] = amount + " EUR -> " + usdAmount + " USD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("GBP"))
                     {
                         System.out.println("Converted Amount: " + gbpAmount);
+                        history[historyCount] = amount + " EUR -> " +  gbpAmount + " GBP";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("JPY"))
                     {
                         System.out.println("Converted Amount: " + jpyAmount);
+                        history[historyCount] = amount + " EUR -> " + jpyAmount + " JPY";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("AUD"))
                     {
                         System.out.println("Converted Amount: " + audAmount);
+                        history[historyCount] = amount + " EUR -> " + audAmount + " AUD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("CAD"))
                     {
                         System.out.println("Converted Amount: " + cadAmount);
+                        history[historyCount] = amount + " EUR -> " + cadAmount + " CAD";
+                        historyCount++;
                     }
                 }
 
@@ -163,14 +187,20 @@ public class CurrencyConverter
                     if(toCurrency.equalsIgnoreCase("USD"))
                     {
                         System.out.println("Converted Amount: " + usdAmount);
+                        history[historyCount] = amount + "GBP  -> " + cadAmount + " USD";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("EUR"))
                     {
                         System.out.println("Converted Amount: " + eurAmount);
+                        history[historyCount] = amount + "GBP -> " + cadAmount + " EUR";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("JPY"))
                     {
                         System.out.println("Converted Amount: " + jpyAmount);
+                        history[historyCount] = amount + "GBP -> " + jpyAmount + " JPY";
+                        historyCount++;
                     }
                     else if(toCurrency.equalsIgnoreCase("AUD"))
                     {
