@@ -1,9 +1,13 @@
 const button = document.getElementById("convertButton");
 
+const clearButton = document.getElementById("clearButton");
+button.addEventListener("click", convertCurrency);
+clearButton.addEventListener("click", clearHistory);
 let history = [];
 let totalConversions = 0;
+let largestConversion = 0;
+let totalAmount = 0;
 
-button.addEventListener("click", convertCurrency);
 function convertCurrency()
 {
 
@@ -11,7 +15,7 @@ function convertCurrency()
 
         if(amount <= 0 || isNaN(amount))
     {
-        document.getElementById("result").textContent = "Please enter a valid amount: ";
+        document.getElementById("result").textContent = "Please enter a valid amount. ";
         return;
     }
     
@@ -19,9 +23,13 @@ function convertCurrency()
     let to = document.getElementById("toCurrency").value;
 
     let result = 0;
+    if(from === to)
+    {
+        result = amount;
+    }
 
     // USD Conversions
-    if(from === "USD" && to === "EUR")
+    else if(from === "USD" && to === "EUR")
     {
         result = amount * 0.89;
     }
@@ -151,11 +159,33 @@ function convertCurrency()
     {
         result = amount * 1.05;
     }
-    document.getElementById("result").textContent = "Converted Amount: " + result.toFixed(2) + " " + to;
 
+    document.getElementById("result").textContent = "Converted Amount: " + result.toFixed(2) + " " + to;
     history.push(amount + " " + from + " -> " + result.toFixed(2) + " " + to);
     totalConversions++;
+    totalAmount = totalAmount + amount;
+
+    if(amount > largestConversion)
+    {
+        largestConversion = amount;
+    }
 
     document.getElementById("history").innerHTML = history.join("<br>");
     document.getElementById("totalConversions").textContent= "Total Conversions: " + totalConversions;
+    document.getElementById("largestConversion").textContent = "Largest Conversion: " + largestConversion;
+    let averageConversion = totalAmount / totalConversions;
+    document.getElementById("averageConversion").textContent = "Average Conversion: " + averageConversion.toFixed(2);
+}
+
+function clearHistory()
+{
+    history = [];
+    totalConversions = 0;
+    document.getElementById("history").innerHTML = "";
+    document.getElementById("totalConversions").textContent = "Total Conversions: 0";
+    document.getElementById("result").textContent = "";
+    totalAmount = 0;
+    document.getElementById("averageConversion").textContent = "Average Conversion: 0";
+    largestConversion = 0;
+    document.getElementById("largestConversion").textContent = "Largest Conversion: 0";
 }
