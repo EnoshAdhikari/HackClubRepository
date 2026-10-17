@@ -1,0 +1,21 @@
+header
+{
+    border-bottom: 1px solid white;    
+}
+body
+{
+    font-family: monospace;
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+main
+{
+
+    background: rgb(76, 15, 98);
+    padding-top: 5px;
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    border-radius: 15px;
+    padding-bottom: 5px;
+}
