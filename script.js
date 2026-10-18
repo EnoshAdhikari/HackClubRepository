@@ -3,10 +3,62 @@ const button = document.getElementById("convertButton");
 const clearButton = document.getElementById("clearButton");
 button.addEventListener("click", convertCurrency);
 clearButton.addEventListener("click", clearHistory);
-let history = [];
-let totalConversions = 0;
-let largestConversion = 0;
-let totalAmount = 0;
+let history = JSON.parse(localStorage.getItem("history")) || [];
+let totalConversions = Number(localStorage.getItem("totalConversions")) || 0;
+let largestConversion = Number(localStorage.getItem("largestConversion")) || 0;
+let totalAmount = Number(localStorage.getItem("totalAmount")) || 0;
+let smallestConversion = Number(localStorage.getItem("smallestConversion")) || Infinity;
+let theme = localStorage.getItem("theme");
+if(theme === "dark")
+{
+    darkMode();
+}
+else if(theme === "light")
+{
+    lightMode();
+}
+else if(theme === "ultra")
+{
+    ultraMode();
+}
+document.getElementById("history").innerHTML = history.join("<br>");
+document.getElementById("totalConversions").textContent = "Total Conversions: " + totalConversions;
+document.getElementById("largestConversion").textContent = "Largest Conversion: " + largestConversion;
+document.getElementById("smallestConversion").textContent = "Smallest Conversion: " + smallestConversion;
+
+
+const darkModeButton = document.getElementById("darkModeButton");
+const lightModeButton = document.getElementById("lightModeButton");
+const ultraModeButton = document.getElementById("ultraModeButton");
+darkModeButton.addEventListener("click", darkMode);
+lightModeButton.addEventListener("click", lightMode);
+ultraModeButton.addEventListener("click", ultraMode);
+
+function darkMode()
+{
+    document.body.style.animation = "none";
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+    localStorage.setItem("theme", "dark");
+}
+function lightMode()
+{
+    document.body.style.animation = "none";
+    document.body.style.backgroundColor = "white";
+    document.body.style.color = "black";
+    localStorage.setItem("theme", "light");
+}
+function ultraMode()
+{
+    document.body.style.animation = "rainbow 3s infinite";
+    document.querySelector("main").style.animation = "rainbow 2s infinite";
+    localStorage.setItem("theme", "ultra");
+}
+if(totalConversions > 0)
+{
+    let averageConversion = totalAmount / totalConversions;
+    document.getElementById("averageConversion").textContent = "Average Conversion: " + averageConversion.toFixed(2);
+}
 
 function convertCurrency()
 {
@@ -169,12 +221,26 @@ function convertCurrency()
     {
         largestConversion = amount;
     }
+    if(amount < smallestConversion)
+    {
+        smallestConversion = amount;
+    }
 
     document.getElementById("history").innerHTML = history.join("<br>");
     document.getElementById("totalConversions").textContent= "Total Conversions: " + totalConversions;
     document.getElementById("largestConversion").textContent = "Largest Conversion: " + largestConversion;
     let averageConversion = totalAmount / totalConversions;
     document.getElementById("averageConversion").textContent = "Average Conversion: " + averageConversion.toFixed(2);
+    localStorage.setItem("history", JSON.stringify(history));
+    localStorage.setItem("totalConversions", totalConversions);
+    localStorage.setItem("largestConversion", largestConversion);
+    localStorage.setItem("totalAmount", totalAmount);
+    localStorage.setItem("smallestConversion", smallestConversion);
+
+
+    
+
+    
 }
 
 function clearHistory()
@@ -188,4 +254,12 @@ function clearHistory()
     document.getElementById("averageConversion").textContent = "Average Conversion: 0";
     largestConversion = 0;
     document.getElementById("largestConversion").textContent = "Largest Conversion: 0";
+    smallestConversion = Infinity;
+    document.getElementById("smallestConversion").textContent = "Smallest Conversion: 0";
+
+    localStorage.removeItem("history");
+    localStorage.removeItem("totalConversions");
+    localStorage.removeItem("largestConversion");
+    localStorage.removeItem("totalAmount");
+    localStorage.removeItem("smallestConversion");
 }
