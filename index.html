@@ -47,15 +47,28 @@
             <div id="history"></div>
             <hr>
             <h2>Statistics</h2>
-            <p id="totalConversions">Total Conversions: 0</p>
-            <p id="largestConversion">Largest Conversion: 0</p>
-            <p id="averageConversion">Average Conversion: 0</p>
-            <p id="smallestConversion">Smallest Conversion: 0</p>
+            <div class="stats-container">
+                <h3>Total</h3>
+                <p id="totalConversions">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Largest</h3>
+                <p id="largestConversion">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Average</h3>
+                <p id="averageConversion">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Smallest</h3>
+                <p id="smallestConversion">0</p>
+            </div>
 
             <button id="clearButton">Clear History</button>
             <button id="darkModeButton">Dark Mode</button>
             <button id="lightModeButton">Light Mode</button>
             <button id="ultraModeButton">Ultra Mode</button>
+            <button id="exportButton">Export History</button>
         </main>
 
         <script src="script.js"></script>

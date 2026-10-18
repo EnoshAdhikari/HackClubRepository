@@ -1,8 +1,10 @@
 const button = document.getElementById("convertButton");
 
 const clearButton = document.getElementById("clearButton");
+const exportButton = document.getElementById("exportButton");
 button.addEventListener("click", convertCurrency);
 clearButton.addEventListener("click", clearHistory);
+exportButton.addEventListener("click", exportHistory);
 let history = JSON.parse(localStorage.getItem("history")) || [];
 let totalConversions = Number(localStorage.getItem("totalConversions")) || 0;
 let largestConversion = Number(localStorage.getItem("largestConversion")) || 0;
@@ -34,25 +36,63 @@ darkModeButton.addEventListener("click", darkMode);
 lightModeButton.addEventListener("click", lightMode);
 ultraModeButton.addEventListener("click", ultraMode);
 
+function exportHistory()
+{
+    let averageConversion = 0;
+
+    if(totalConversions > 0)
+    {
+        averageConversion = totalAmount / totalConversions;
+    }
+    let historyText = "Currency Converter Report\n\n" + 
+    "Conversion History\n" + "==================\n" + history.join("\n") + "\n\nStatistics\n" + "=========="
+    + "\nTotal Conversions: " + totalConversions + "\nLargest Conversion: " + largestConversion + "\nSmallest Conversion: " + smallestConversion
+    + "\nAverage Conversion: " + averageConversion.toFixed(2);
+    let blob = new Blob([historyText], {type: "text/plain"});
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "currency-history.txt";
+    link.click();
+    history.join()
+}
+
 function darkMode()
 {
+    const buttons = document.querySelectorAll("button");
     document.body.style.animation = "none";
+    document.querySelector("main").style.animation = "none";
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white";
+    document.querySelector("main").style.backgroundColor = "rgb(76,15,98)";
     localStorage.setItem("theme", "dark");
+    document.getElementById("header").style.animation = "none";
+    buttons.forEach(button => {button.style.animation = "none"});
+    document.getElementById("history").style.animation = "none";
 }
 function lightMode()
 {
+    const buttons = document.querySelectorAll("button");
     document.body.style.animation = "none";
+    document.querySelector("main").style.animation = "none";
     document.body.style.backgroundColor = "white";
     document.body.style.color = "black";
+    document.querySelector("main").style.backgroundColor = "rgb(76,15,98)";
     localStorage.setItem("theme", "light");
+    document.getElementById("header").style.animation = "none";
+    buttons.forEach(button => {button.style.animation = "none"});
+    document.getElementById("history").style.animation = "none";
 }
 function ultraMode()
 {
     document.body.style.animation = "rainbow 3s infinite";
     document.querySelector("main").style.animation = "rainbow 2s infinite";
     localStorage.setItem("theme", "ultra");
+    document.getElementById("header").style.animation = "textRainbow 2s infinite";
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach(button => {button.style.animation = "glow 1s infinite"});
+    document.querySelector("main").style.animation = "rainbow 2s infinite, pulse 2s infinite";
+    document.getElementById("history").style.animation = "textRainbow 1.5s infinite";
+    document.getElementById("result").textContent = "ULTRA MODE ACTIVATED🔥";
 }
 if(totalConversions > 0)
 {
