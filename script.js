@@ -61,7 +61,7 @@ function darkMode()
     const buttons = document.querySelectorAll("button");
     document.body.style.animation = "none";
     document.querySelector("main").style.animation = "none";
-    document.body.style.backgroundColor = "black";
+    document.body.style.background = "black";
     document.body.style.color = "white";
     document.querySelector("main").style.backgroundColor = "rgb(76,15,98)";
     localStorage.setItem("theme", "dark");
@@ -74,7 +74,7 @@ function lightMode()
     const buttons = document.querySelectorAll("button");
     document.body.style.animation = "none";
     document.querySelector("main").style.animation = "none";
-    document.body.style.backgroundColor = "white";
+    document.body.style.background = "white";
     document.body.style.color = "black";
     document.querySelector("main").style.backgroundColor = "rgb(76,15,98)";
     localStorage.setItem("theme", "light");

@@ -27,6 +27,7 @@ main
     background: linear-gradient(135deg, #581c87, #4c1d95);
     box-shadow: 0 0 30px rgba(147,51,234,.5);
     backdrop-filter: blur(8px);
+    color: white;
 
 }
 main::hover
@@ -119,14 +120,7 @@ button:hover
     gap: 15px;
     flex-wrap: wrap;
 }
-.stat-card
-{
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 10px;
-    width: 150px;
-    box-shadow: 0 0 15px rgba(0,0,0,.3);
-}
+
 input,select
 {
     padding: 10px;
